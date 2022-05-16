@@ -3,29 +3,27 @@ import Header from './Header';
 import Total from './Total';
 
 const App = () => {
-    const desc = {
-        title: 'Half Stack application development',
-        body: [
-            {
-                part: 'Fundamentals of React',
-                exercises: 10,
-            },
-            {
-                part: 'Using props to pass data',
-                exercises: 7,
-            },
-            {
-                part: 'State of a component',
-                exercises: 14,
-            },
-        ],
-    };
+    const course = 'Half Stack application development'
+    const parts = [
+      {
+        name: 'Fundamentals of React',
+        exercises: 10
+      },
+      {
+        name: 'Using props to pass data',
+        exercises: 7
+      },
+      {
+        name: 'State of a component',
+        exercises: 14
+      }
+    ]
 
     return (
         <div>
-            <Header title={desc.title} />
-            <Content body={desc.body} />
-            <Total body={desc.body} />
+            <Header title={course} />
+            <Content parts={parts} />
+            <Total parts={parts} />
         </div>
     );
 };

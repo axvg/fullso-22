@@ -1,7 +1,7 @@
 const Part = ({element}) => {
     return (
         <p>
-            {element.part} - {element.exercises}
+            {element.name} - {element.exercises}
         </p>
     );
 };

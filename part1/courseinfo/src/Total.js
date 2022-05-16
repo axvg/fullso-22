@@ -1,8 +1,8 @@
-const Total = ({ body }) => {
+const Total = ({ parts }) => {
     return (
         <p>
             Number of exercises:{' '}
-            {body[0].exercises + body[1].exercises + body[2].exercises}
+            {parts[0].exercises + parts[1].exercises + parts[2].exercises}
         </p>
     );
 };
