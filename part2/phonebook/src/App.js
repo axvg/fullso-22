@@ -1,9 +1,15 @@
 import { useState } from 'react';
 
 const App = () => {
-    const [persons, setPersons] = useState([]);
+    const [persons, setPersons] = useState([
+        { name: 'Arto Hellas', number: '040-123456', id: 1 },
+        { name: 'Ada Lovelace', number: '39-44-5323523', id: 2 },
+        { name: 'Dan Abramov', number: '12-43-234345', id: 3 },
+        { name: 'Mary Poppendieck', number: '39-23-6423122', id: 4 },
+    ]);
     const [newName, setNewName] = useState('');
     const [newPhone, setNewPhone] = useState('');
+    const [search, setSearch] = useState('');
 
     const addPerson = (e) => {
         e.preventDefault();
@@ -31,16 +37,28 @@ const App = () => {
     const handleChangePho = (e) => {
         setNewPhone(e.target.value);
     };
+    const handleChangeSea = (e) => {
+        setSearch(e.target.value);
+    };
+
+    const dataToShow = persons.filter(p => p.name.toUpperCase().includes(search.toUpperCase()))
 
     return (
         <div>
             <h2>Phonebook</h2>
+            <div>
+                filter shown with: <input onChange={handleChangeSea} value={search} />
+            </div>
+
+            <h2>add a new</h2>
+            {/* {console.log(dataToShow)}
+            {console.log(search)} */}
             <form onSubmit={addPerson}>
                 <div>
                     name: <input onChange={handleChangeNum} value={newName} />
                 </div>
                 <div>
-                    number:{' '}
+                    number:
                     <input onChange={handleChangePho} value={newPhone} />
                 </div>
                 <div>
@@ -49,7 +67,7 @@ const App = () => {
             </form>
             <h2>Numbers</h2>
 
-            {persons.map((p) => (
+            {dataToShow.map((p) => (
                 <p key={p.id}>
                     {p.name} {p.number}
                 </p>
